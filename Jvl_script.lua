@@ -12,6 +12,14 @@ local Window = Fluent:CreateWindow({
     MinimizeKey = Enum.KeyCode.LeftControl 
 })
 
+local notify function(titletext, description, duration):
+	Fluent:Notify({
+	    Title = titletext,
+	    Content = description,
+	    Duration = duration
+	})
+end)
+
 
 local Tabs = {
     Main = Window:AddTab({ Title = "Main", Icon = "rbxassetid://10709807111" }),
@@ -314,11 +322,8 @@ Tabs.Misc:AddButton({
         Title = "Crash Function",
         Description = "[Сейчас в разработке! Скоро будет добавлено]",
         Callback = function()
-		Fluent:Notify({
-		    Title = "Ошибка!",
-		    Content = "Данная функция находится в разработке!",
-		    Duration = 10
-		})
+		notify("Ошибка!", "Данная функция отключена!", 4)
+		
 end})
 
 Tabs.Misc:AddButton({
@@ -356,6 +361,7 @@ SaveManager:BuildConfigSection(Tabs.Settings)
 
 
 Window:SelectTab(1)
+
 
 Fluent:Notify({
     Title = "Govnocode by Jevilxs & 8360",
