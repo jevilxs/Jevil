@@ -66,9 +66,43 @@ Tabs.Main:AddButton({
         end
 		end
 		end})
+	
 end
 
+Tabs.Main:AddButton({
+        Title = "Полет",
+        Description = "Включает функцию полета",
+        Callback = function()
+local flying = false
+local speed = 20
+local flightConnection
 
+local function startFlying()
+    flying = true
+    local bodyVelocity = Instance.new("BodyVelocity")
+    bodyVelocity.Velocity = Vector3.new(0, 0, 0)
+    bodyVelocity.MaxForce = Vector3.new(math.huge, math.huge, math.huge)
+    bodyVelocity.Parent = humanoidRootPart
+    
+    flightConnection = RunService.RenderStepped:Connect(function()
+        local moveDirection = humanoidRootPart.CFrame.LookVector * (UserInputService:IsKeyDown(Enum.KeyCode.W) and 1 or 0)
+        bodyVelocity.Velocity = Vector3.new(moveDirection.X * speed, 0, moveDirection.Z * speed)
+    end)
+end
+
+local function stopFlying()
+    flying = false
+    if flightConnection then flightConnection:Disconnect() end
+    if humanoidRootPart:FindFirstChild("BodyVelocity") then
+        humanoidRootPart.BodyVelocity:Destroy()
+    end
+end
+        if flying then
+            stopFlying()
+        else
+            startFlying()
+	end
+		end})
 
 Tabs.Main:AddButton({
         Title = "Chat spying",
