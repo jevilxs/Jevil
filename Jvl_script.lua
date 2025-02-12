@@ -71,8 +71,8 @@ end
 
 
 Tabs.Main:AddButton({
-        Title = "Chat spying",
-        Description = "Включает spying чата.",
+        Title = "Полет (Beta-Test)",
+        Description = "Включает полет с помощью анимации",
         Callback = function()
 local player = game.Players.LocalPlayer
 local character = player.Character or player.CharacterAdded:Wait()
