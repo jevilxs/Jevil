@@ -17,8 +17,7 @@ local Tabs = {
     Main = Window:AddTab({ Title = "Main", Icon = "rbxassetid://10709807111" }),
 	Misc = Window:AddTab({ Title = "Misc", Icon = "rbxassetid://10734963400" }),
 	Basic = Window:AddTab({ Title = "Player", Icon = "rbxassetid://10747372167" }),
-    	Settings = Window:AddTab({ Title = "Settings", Icon = "settings" }),
-    Rule = Window:AddTab({ Title = "Rules", Icon = "settings" })	
+    	Settings = Window:AddTab({ Title = "Settings", Icon = "settings" }),	
 }
 
 local Options = Fluent.Options
@@ -319,11 +318,6 @@ loadstring(game:HttpGet(('https://raw.githubusercontent.com/nitrogenhbexp/beta-s
 end})
 
 
-Tabs.Rule:AddButton({
-        Title = "Ворование кода:",
-        Description = "Воровать код и продавать другим строго запрещено! By Jevilxs",
-        Callback = function()
-end})
 
 
 
