@@ -18,6 +18,7 @@ local Tabs = {
 	Misc = Window:AddTab({ Title = "Misc", Icon = "rbxassetid://10734963400" }),
 	Basic = Window:AddTab({ Title = "Player", Icon = "rbxassetid://10747372167" }),
     Settings = Window:AddTab({ Title = "Settings", Icon = "settings" }),	
+    Teleport = Window:AddTab({ Title = "Teleports", Icon = "rbxassetid://10747372167" })
 }
 
 local Options = Fluent.Options
@@ -69,65 +70,6 @@ Tabs.Main:AddButton({
 	
 end
 
-
-Tabs.Main:AddButton({
-        Title = "Полет (Beta-Test)",
-        Description = "Включает полет с помощью анимации",
-        Callback = function()
-local player = game.Players.LocalPlayer
-local character = player.Character or player.CharacterAdded:Wait()
-local humanoid = character:FindFirstChildOfClass("Humanoid")
-local flying = false
-local flySpeed = 50 -- Скорость полёта
-
--- Функция для включения полёта
-local function startFlying()
-    if flying then return end
-    flying = true
-    
-    -- Создаём тело для управления движением
-    local bodyVelocity = Instance.new("BodyVelocity")
-    bodyVelocity.Velocity = Vector3.new(0, 0, 0)
-    bodyVelocity.MaxForce = Vector3.new(math.huge, math.huge, math.huge)
-    bodyVelocity.Parent = character.PrimaryPart
-    
-    -- Загружаем анимацию Супермена
-    local animation = Instance.new("Animation")
-    animation.AnimationId = "rbxassetid://128853357" -- ID анимации Супермена
-    local animator = humanoid:FindFirstChildOfClass("Animator")
-    local animTrack = animator:LoadAnimation(animation)
-    animTrack:Play()
-    
-    -- Управляем движением
-    local userInputService = game:GetService("UserInputService")
-    local runService = game:GetService("RunService")
-    
-    local function onUpdate()
-        local moveDirection = humanoid.MoveDirection
-        if moveDirection.Magnitude > 0 then
-            bodyVelocity.Velocity = moveDirection * flySpeed
-        else
-            bodyVelocity.Velocity = Vector3.new(0, 0, 0)
-        end
-    end
-    
-    local flyConnection = runService.RenderStepped:Connect(onUpdate)
-    
-    -- Отключение полёта при ресете
-    local function onCharacterReset()
-        flying = false
-        bodyVelocity:Destroy()
-        animTrack:Stop()
-        flyConnection:Disconnect()
-    end
-    
-    character.Humanoid.Died:Connect(onCharacterReset)
-end
-startFlying()		
-
-			
-end
-    })
 
 
 Tabs.Main:AddButton({
@@ -375,6 +317,29 @@ Tabs.Misc:AddButton({
         Description = "Password - nitrogencomingback",
         Callback = function()
 loadstring(game:HttpGet(('https://raw.githubusercontent.com/nitrogenhbexp/beta-script/refs/heads/main/script'),true))()
+end})
+
+
+Tabs.Teleport:AddButton({
+        Title = "В данном разделе тепает у места РГЧ",
+        Description = "Сделано by jevilxs",
+        Callback = function()
+    local character = player.Character
+    if character then
+        local humanoidRootPart = character:FindFirstChild("HumanoidRootPart")
+        if humanoidRootPart then
+            local targetPart = workspace:GetChildren()[90]
+            if targetPart and targetPart:IsA("BasePart") then
+                humanoidRootPart.CFrame = targetPart.CFrame + Vector3.new(0, 3, 0)
+            else
+                warn("Target part is not valid")
+            end
+        else
+            warn("HumanoidRootPart not found")
+        end
+    else
+        warn("Character not found")
+    end
 end})
 
 
