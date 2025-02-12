@@ -86,8 +86,38 @@ Tabs.Main:AddButton({
 	
 end
 
+Tabs.Main:AddButton({
+        Title = "Noclip",
+        Description = "Включает функцию прохода сквозь стены",
+        Callback = function()
+-- Получаем ссылку на игрока и его персонажа
+local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
 
 
+-- Создаем кнопку
+
+-- Переменная для отслеживания состояния (включен ли режим)
+local canPassThroughWalls = false
+
+-- Функция для включения/выключения прохождения через стены
+local function toggleWallPass()
+    canPassThroughWalls = not canPassThroughWalls
+    
+    -- Включаем или выключаем коллизию для всех частей персонажа
+    for _, part in pairs(character:GetDescendants()) do
+        if part:IsA("BasePart") then
+            part.CanCollide = not canPassThroughWalls
+        end
+    end
+
+end
+
+toggleWallPass()
+
+
+			
+end})
 Tabs.Main:AddButton({
         Title = "Chat spying",
         Description = "Включает spying чата.",
