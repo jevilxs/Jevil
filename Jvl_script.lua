@@ -373,39 +373,6 @@ end})
 
 
 
-Tabs.Anim:AddButton({
-        Title = "FlyAnim",
-        Description = "Нажми чтобы включить!",
-        Callback = function()
-local UserInputService = game:GetService("UserInputService")
-local Players = game:GetService("Players")
-local player = Players.LocalPlayer
-local character = player.Character or player.CharacterAdded:Wait()
-local humanoid = character:FindFirstChildOfClass("Humanoid")
-
-local animation = Instance.new("Animation")
-animation.AnimationId = "rbxassetid://9289732314"
-
-local animator = humanoid:FindFirstChildOfClass("Animator") or Instance.new("Animator", humanoid)
-local animationTrack = animator:LoadAnimation(animation)
-
-local flying = false
-
-local function animtoggle()
-        if flying then
-            animationTrack:Stop()
-            flying = false
-        else
-            animationTrack:Play()
-            flying = true
-        end
-				
-end
-animtoggle()
-			
-end})
-
-
 
 -- Addons:
 -- SaveManager (Allows you to have a configuration system)
