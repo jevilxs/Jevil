@@ -3,17 +3,16 @@ local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/d
 local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
 
 local Window = Fluent:CreateWindow({
-    Title = "Govnocode ",
-    SubTitle = "by Jevilxs & 8360",
+    Title = "WallperX ",
+    SubTitle = "by jevilxs & 8360",
     TabWidth = 160,
     Size = UDim2.fromOffset(580, 460),
-    Acrylic = true, 
+    Acrylic = true, -- The blur may be detectable, setting this to false disables blur entirely
     Theme = "Aqua",
-    MinimizeKey = Enum.KeyCode.LeftControl 
+    MinimizeKey = Enum.KeyCode.RightControl -- Used when theres no MinimizeKeybind
 })
 
-
-
+--Fluent provides Lucide Icons https://lucide.dev/icons/ for the tabs, icons are optional
 local Tabs = {
     Main = Window:AddTab({ Title = "Main", Icon = "rbxassetid://10709807111" }),
 	Misc = Window:AddTab({ Title = "Misc", Icon = "rbxassetid://10734963400" }),
@@ -25,8 +24,8 @@ local Options = Fluent.Options
 
 do
     Tabs.Main:AddParagraph({
-        Title = "Функции клиента:",
-        Content = "Тут находятся основные скрипты клиента"
+        Title = "Main scripts",
+        Content = "Тут находятся основные скрипты."
     })
 
 
@@ -72,7 +71,7 @@ end
 
 
 Tabs.Main:AddButton({
-        Title = "Chat spying [Beta-Test]",
+        Title = "Chat spying",
         Description = "Включает spying чата.",
         Callback = function()
 enabled = true
@@ -347,9 +346,8 @@ SaveManager:BuildConfigSection(Tabs.Settings)
 
 Window:SelectTab(1)
 
-
 Fluent:Notify({
-    Title = "Govnocode by Jevilxs & 8360",
+    Title = "WallperX by jevilxs & 8360",
     Content = "Скрипт полностью загрузился, удачного пользования!",
     Duration = 10
 })
