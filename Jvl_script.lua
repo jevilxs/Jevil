@@ -318,16 +318,16 @@ Tabs.Misc:AddButton({
 loadstring(game:HttpGet(('https://raw.githubusercontent.com/nitrogenhbexp/beta-script/refs/heads/main/script'),true))()
 end})
 
-Tabs.Misc:AddParagraph({
+Tabs.Rules:AddParagraph({
         Title = "Rules",
         Content = "Правила использования клиента:"
     })
-Tabs.Misc:AddButton({
+Tabs.Rules:AddButton({
         Title = "Ворование кода:",
         Description = "Воровать код и продавать другим строго запрещено! By Jevilxs",
         Callback = function()
 end})
-Tabs.Misc:AddButton({
+Tabs.Rules:AddButton({
         Title = "Удачи пуська <3 . (P.S: Jevilxs любит вас!)",
         Description = "Просто наслаждайся клиентом)",
         Callback = function()
