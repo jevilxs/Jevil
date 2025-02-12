@@ -12,13 +12,6 @@ local Window = Fluent:CreateWindow({
     MinimizeKey = Enum.KeyCode.LeftControl 
 })
 
-local notify function(titletext, description, duration):
-	Fluent:Notify({
-	    Title = titletext,
-	    Content = description,
-	    Duration = duration
-	})
-end)
 
 
 local Tabs = {
@@ -322,7 +315,6 @@ Tabs.Misc:AddButton({
         Title = "Crash Function",
         Description = "[Сейчас в разработке! Скоро будет добавлено]",
         Callback = function()
-		notify("Ошибка!", "Данная функция отключена!", 4)
 		
 end})
 
