@@ -312,13 +312,6 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/H20CalibreYT/SystemBr
 end})
 
 Tabs.Misc:AddButton({
-        Title = "Crash Function",
-        Description = "[Сейчас в разработке! Скоро будет добавлено]",
-        Callback = function()
-		
-end})
-
-Tabs.Misc:AddButton({
         Title = "Nitrogen",
         Description = "Password - nitrogencomingback",
         Callback = function()
