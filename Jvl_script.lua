@@ -110,10 +110,36 @@ local function toggleWallPass()
             part.CanCollide = not canPassThroughWalls
         end
     end
-
+    
 end
 
-toggleWallPass()
+-- Обработчик нажатия на кнопку
+button.MouseButton1Click:Connect(toggleWallPass)
+
+-- Функция, которая проверяет и поддерживает состояние noclip
+local function maintainNoClip()
+    while true do
+        if canPassThroughWalls then
+            -- Если режим включен, то принудительно убираем коллизию с персонажа
+            for _, part in pairs(character:GetDescendants()) do
+                if part:IsA("BasePart") then
+                    part.CanCollide = false
+                end
+            end
+        else
+            -- Если режим выключен, восстанавливаем коллизию
+            for _, part in pairs(character:GetDescendants()) do
+                if part:IsA("BasePart") then
+                    part.CanCollide = true
+                end
+            end
+        end
+        wait(0.1) -- Проверяем состояние каждые 0.1 секунды
+    end
+end
+
+-- Запуск проверки состояния noclip
+spawn(maintainNoClip)
 
 
 			
