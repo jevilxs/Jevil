@@ -324,22 +324,17 @@ Tabs.Teleport:AddButton({
         Title = "В данном разделе тепает у места РГЧ",
         Description = "Сделано by jevilxs",
         Callback = function()
-    local character = player.Character
-    if character then
-        local humanoidRootPart = character:FindFirstChild("HumanoidRootPart")
-        if humanoidRootPart then
-            local targetPart = workspace:GetChildren()[90]
-            if targetPart and targetPart:IsA("BasePart") then
-                humanoidRootPart.CFrame = targetPart.CFrame + Vector3.new(0, 3, 0)
-            else
-                warn("Target part is not valid")
-            end
-        else
-            warn("HumanoidRootPart not found")
-        end
-    else
-        warn("Character not found")
-    end
+end})
+Tabs.Teleport:AddButton({
+        Title = "Телепорт на спавн",
+        Description = "Нажми чтобы телепортироваться на спавн!",
+        Callback = function()
+	local targetObject = workspace:GetChildren()[90]
+	if targetObject then
+	    local player = game.Players.LocalPlayer
+	    local targetPosition = targetObject.Position + Vector3.new(0, 5, 0)  -- Поднимаем на 5 единиц по оси Y
+	    player.Character:SetPrimaryPartCFrame(CFrame.new(targetPosition))
+	end		
 end})
 
 
