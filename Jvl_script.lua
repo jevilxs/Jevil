@@ -4,11 +4,11 @@ local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.
 
 local Window = Fluent:CreateWindow({
     Title = "Govnocode ",
-    SubTitle = "by Jevilxs",
+    SubTitle = "by Jevilxs & 8360",
     TabWidth = 160,
     Size = UDim2.fromOffset(580, 460),
     Acrylic = true, 
-    Theme = "Dark",
+    Theme = "Aqua",
     MinimizeKey = Enum.KeyCode.LeftControl 
 })
 
@@ -24,8 +24,8 @@ local Options = Fluent.Options
 
 do
     Tabs.Main:AddParagraph({
-        Title = "Main scripts",
-        Content = "Тут находятся основные скрипты."
+        Title = "Функции клиента:",
+        Content = "Тут находятся основные скрипты клиента"
     })
 
 
@@ -71,7 +71,7 @@ end
 
 
 Tabs.Main:AddButton({
-        Title = "Chat spying",
+        Title = "Chat spying [Beta-Test]",
         Description = "Включает spying чата.",
         Callback = function()
 enabled = true
@@ -311,6 +311,17 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/H20CalibreYT/SystemBr
 end})
 
 Tabs.Misc:AddButton({
+        Title = "Crash Function",
+        Description = "[Сейчас в разработке! Скоро будет добавлено]",
+        Callback = function()
+		Fluent:Notify({
+		    Title = "Ошибка!",
+		    Content = "Данная функция находится в разработке!",
+		    Duration = 10
+		})
+end})
+
+Tabs.Misc:AddButton({
         Title = "Nitrogen",
         Description = "Password - nitrogencomingback",
         Callback = function()
@@ -347,7 +358,7 @@ SaveManager:BuildConfigSection(Tabs.Settings)
 Window:SelectTab(1)
 
 Fluent:Notify({
-    Title = "Govnocode by Jevilxs",
+    Title = "Govnocode by Jevilxs & 8360",
     Content = "Скрипт полностью загрузился, удачного пользования!",
     Duration = 10
 })
