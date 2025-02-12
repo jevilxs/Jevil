@@ -320,8 +320,8 @@ end})
 
 Tabs.Rule:AddParagraph({
         Title = "Rules",
-        Content = "Правила использования клиента:"
-    })
+        Content = "Тут находятся основные скрипты."
+})
 Tabs.Rule:AddButton({
         Title = "Ворование кода:",
         Description = "Воровать код и продавать другим строго запрещено! By Jevilxs",
