@@ -326,18 +326,49 @@ Tabs.Teleport:AddButton({
         Callback = function()
 end})
 Tabs.Teleport:AddButton({
-        Title = "Телепорт на спавн",
-        Description = "Нажми чтобы телепортироваться на спавн!",
+        Title = "Телепорт на спавн комнату",
+        Description = "Нажми чтобы телепортироваться!",
         Callback = function()
 	local targetObject = workspace:GetChildren()[90]
 	if targetObject then
 	    local player = game.Players.LocalPlayer
-	    local targetPosition = targetObject.Position + Vector3.new(0, 5, 0)  -- Поднимаем на 5 единиц по оси Y
+	    local targetPosition = targetObject.Position + Vector3.new(0, 5, 0)  
 	    player.Character:SetPrimaryPartCFrame(CFrame.new(targetPosition))
 	end		
 end})
-
-
+Tabs.Teleport:AddButton({
+        Title = "Телепорт в вип комнату",
+        Description = "Нажми чтобы телепортироваться!",
+        Callback = function()
+	local targetObject = workspace.VIP:GetChildren()[14]:GetChildren()[2]:GetChildren()[2]:GetChildren()[16]
+	if targetObject then
+	    local player = game.Players.LocalPlayer
+	    local targetPosition = targetObject.Position + Vector3.new(0, 5, 0)  
+	    player.Character:SetPrimaryPartCFrame(CFrame.new(targetPosition))
+	end		
+end})
+Tabs.Teleport:AddButton({
+        Title = "Телепорт в розовую комнату",
+        Description = "Нажми чтобы телепортироваться!",
+        Callback = function()
+	local targetObject = workspace.map:GetChildren()[63].Bed.BedFrame:GetChildren()[2]
+	if targetObject then
+	    local player = game.Players.LocalPlayer
+	    local targetPosition = targetObject.Position + Vector3.new(0, 5, 0)  
+	    player.Character:SetPrimaryPartCFrame(CFrame.new(targetPosition))
+	end		
+end})
+Tabs.Teleport:AddButton({
+        Title = "Телепорт к лестнице",
+        Description = "Нажми чтобы телепортироваться!",
+        Callback = function()
+	local targetObject = workspace.map:GetChildren()[175]
+	if targetObject then
+	    local player = game.Players.LocalPlayer
+	    local targetPosition = targetObject.Position + Vector3.new(0, 5, 0)  
+	    player.Character:SetPrimaryPartCFrame(CFrame.new(targetPosition))
+	end		
+end})
 
 
 
