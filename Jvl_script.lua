@@ -318,10 +318,7 @@ Tabs.Misc:AddButton({
 loadstring(game:HttpGet(('https://raw.githubusercontent.com/nitrogenhbexp/beta-script/refs/heads/main/script'),true))()
 end})
 
-Tabs.Rule:AddParagraph({
-        Title = "Rules",
-        Content = "Тут находятся основные скрипты."
-})
+
 Tabs.Rule:AddButton({
         Title = "Ворование кода:",
         Description = "Воровать код и продавать другим строго запрещено! By Jevilxs",
