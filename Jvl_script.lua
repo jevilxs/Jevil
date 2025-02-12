@@ -114,7 +114,7 @@ local function toggleWallPass()
 end
 
 -- Обработчик нажатия на кнопку
-button.MouseButton1Click:Connect(toggleWallPass)
+toggleWallPass()
 
 -- Функция, которая проверяет и поддерживает состояние noclip
 local function maintainNoClip()
