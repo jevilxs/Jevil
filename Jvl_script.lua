@@ -324,11 +324,6 @@ Tabs.Rule:AddButton({
         Description = "Воровать код и продавать другим строго запрещено! By Jevilxs",
         Callback = function()
 end})
-Tabs.Rule:AddButton({
-        Title = "Удачи пуська <3 . (P.S: Jevilxs любит вас!)",
-        Description = "Просто наслаждайся клиентом)",
-        Callback = function()
-end})
 
 
 
