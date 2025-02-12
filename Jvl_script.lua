@@ -18,7 +18,8 @@ local Tabs = {
 	Misc = Window:AddTab({ Title = "Misc", Icon = "rbxassetid://10734963400" }),
 	Basic = Window:AddTab({ Title = "Player", Icon = "rbxassetid://10747372167" }),
     Settings = Window:AddTab({ Title = "Settings", Icon = "settings" }),	
-    Teleport = Window:AddTab({ Title = "Teleports", Icon = "rbxassetid://10747372167" })
+    Teleport = Window:AddTab({ Title = "Teleports", Icon = "rbxassetid://10747372167" }),
+    Anim = Window:AddTab({ Title = "Animations", Icon = "rbxassetid://10747372167" }),
 }
 
 local Options = Fluent.Options
@@ -368,6 +369,40 @@ Tabs.Teleport:AddButton({
 	    local targetPosition = targetObject.Position + Vector3.new(0, 5, 0)  
 	    player.Character:SetPrimaryPartCFrame(CFrame.new(targetPosition))
 	end		
+end})
+
+
+
+Tabs.Anim:AddButton({
+        Title = "FlyAnim",
+        Description = "Нажми чтобы включить!",
+        Callback = function()
+local UserInputService = game:GetService("UserInputService")
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local humanoid = character:FindFirstChildOfClass("Humanoid")
+
+local animation = Instance.new("Animation")
+animation.AnimationId = "rbxassetid://9289732314"
+
+local animator = humanoid:FindFirstChildOfClass("Animator") or Instance.new("Animator", humanoid)
+local animationTrack = animator:LoadAnimation(animation)
+
+local flying = false
+
+local function animtoggle()
+        if flying then
+            animationTrack:Stop()
+            flying = false
+        else
+            animationTrack:Play()
+            flying = true
+        end
+				
+end
+animtoggle()
+			
 end})
 
 
