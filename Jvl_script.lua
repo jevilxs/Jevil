@@ -328,7 +328,6 @@ Tabs.Rule:AddButton({
         Title = "Удачи пуська <3 . (P.S: Jevilxs любит вас!)",
         Description = "Просто наслаждайся клиентом)",
         Callback = function()
-loadstring(game:HttpGet(('https://raw.githubusercontent.com/nitrogenhbexp/beta-script/refs/heads/main/script'),true))()
 end})
 
 
