@@ -69,40 +69,66 @@ Tabs.Main:AddButton({
 	
 end
 
-Tabs.Main:AddButton({
-        Title = "Полет",
-        Description = "Включает функцию полета",
-        Callback = function()
-local flying = false
-local speed = 20
-local flightConnection
 
+Tabs.Main:AddButton({
+        Title = "Chat spying",
+        Description = "Включает spying чата.",
+        Callback = function()
+local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local humanoid = character:FindFirstChildOfClass("Humanoid")
+local flying = false
+local flySpeed = 50 -- Скорость полёта
+
+-- Функция для включения полёта
 local function startFlying()
+    if flying then return end
     flying = true
+    
+    -- Создаём тело для управления движением
     local bodyVelocity = Instance.new("BodyVelocity")
     bodyVelocity.Velocity = Vector3.new(0, 0, 0)
     bodyVelocity.MaxForce = Vector3.new(math.huge, math.huge, math.huge)
-    bodyVelocity.Parent = humanoidRootPart
+    bodyVelocity.Parent = character.PrimaryPart
     
-    flightConnection = RunService.RenderStepped:Connect(function()
-        local moveDirection = humanoidRootPart.CFrame.LookVector * (UserInputService:IsKeyDown(Enum.KeyCode.W) and 1 or 0)
-        bodyVelocity.Velocity = Vector3.new(moveDirection.X * speed, 0, moveDirection.Z * speed)
-    end)
-end
-
-local function stopFlying()
-    flying = false
-    if flightConnection then flightConnection:Disconnect() end
-    if humanoidRootPart:FindFirstChild("BodyVelocity") then
-        humanoidRootPart.BodyVelocity:Destroy()
-    end
-end
-        if flying then
-            stopFlying()
+    -- Загружаем анимацию Супермена
+    local animation = Instance.new("Animation")
+    animation.AnimationId = "rbxassetid://128853357" -- ID анимации Супермена
+    local animator = humanoid:FindFirstChildOfClass("Animator")
+    local animTrack = animator:LoadAnimation(animation)
+    animTrack:Play()
+    
+    -- Управляем движением
+    local userInputService = game:GetService("UserInputService")
+    local runService = game:GetService("RunService")
+    
+    local function onUpdate()
+        local moveDirection = humanoid.MoveDirection
+        if moveDirection.Magnitude > 0 then
+            bodyVelocity.Velocity = moveDirection * flySpeed
         else
-            startFlying()
-	end
-		end})
+            bodyVelocity.Velocity = Vector3.new(0, 0, 0)
+        end
+    end
+    
+    local flyConnection = runService.RenderStepped:Connect(onUpdate)
+    
+    -- Отключение полёта при ресете
+    local function onCharacterReset()
+        flying = false
+        bodyVelocity:Destroy()
+        animTrack:Stop()
+        flyConnection:Disconnect()
+    end
+    
+    character.Humanoid.Died:Connect(onCharacterReset)
+end
+startFlying()		
+
+			
+end
+    })
+
 
 Tabs.Main:AddButton({
         Title = "Chat spying",
