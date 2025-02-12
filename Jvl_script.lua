@@ -4,7 +4,7 @@ local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.
 
 local Window = Fluent:CreateWindow({
     Title = "WallperX ",
-    SubTitle = "by jevilxs & 8360",
+    SubTitle = "by jevilxs & 8360 (DISCORD: kolivaldel#9384)",
     TabWidth = 160,
     Size = UDim2.fromOffset(580, 460),
     Acrylic = true, -- The blur may be detectable, setting this to false disables blur entirely
@@ -402,7 +402,7 @@ SaveManager:BuildConfigSection(Tabs.Settings)
 Window:SelectTab(5)
 
 Fluent:Notify({
-    Title = "WallperX by jevilxs & 8360",
+    Title = "WallperX by jevilxs & 8360 (DISCORD: kolivaldel#9384)",
     Content = "Скрипт полностью загрузился, удачного пользования!",
     Duration = 10
 })
