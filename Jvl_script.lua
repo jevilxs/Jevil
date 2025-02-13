@@ -19,8 +19,7 @@ local Tabs = {
 	Misc = Window:AddTab({ Title = "Misc", Icon = "rbxassetid://10734963400" }),
 	Basic = Window:AddTab({ Title = "Player", Icon = "rbxassetid://10747372167" }),
     Settings = Window:AddTab({ Title = "Settings", Icon = "settings" }),	
-    Teleport = Window:AddTab({ Title = "Teleports", Icon = "rbxassetid://10709768939" })
-    Options = Window:AddTab({ Title = "Character", Icon = "rbxassetid://10747372167" }),
+    Teleport = Window:AddTab({ Title = "Teleports", Icon = "rbxassetid://10709768939" })                                       
 }
 
 local Options = Fluent.Options
@@ -458,28 +457,6 @@ Tabs.Teleport:AddButton({
 	    player.Character:SetPrimaryPartCFrame(CFrame.new(targetPosition))
 	end		
 end})
-
-Tabs.Option:AddButton({
-        Title = "Reset character",
-        Description = "Ресет, но тепает сразу на координаты смерти",
-        Callback = function()
-local player = game.Players.LocalPlayer
-local character = player.Character or player.CharacterAdded:Wait()
-
-local function killAndRespawn()
-    local position = character:GetPrimaryPartCFrame()
-    character:BreakJoints()
-    
-    player.CharacterAdded:Wait()
-    task.wait(0.5)
-    player.Character:SetPrimaryPartCFrame(position)
-end
-
-killAndRespawn()
-
-end})
-
-
 
 
 
