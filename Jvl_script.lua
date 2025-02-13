@@ -57,10 +57,10 @@ local function killAndRespawn()
     local character = player.Character or player.CharacterAdded:Wait()
     local position = character:GetPrimaryPartCFrame()
     
-    character.Humanoid.Health = 0 -- Гарантированное убийство
+    character.Humanoid.Health = 0 
     
     local newCharacter = player.CharacterAdded:Wait()
-    task.wait(0.5)
+    task.wait(0.01)
     newCharacter:SetPrimaryPartCFrame(position)
 end
 
