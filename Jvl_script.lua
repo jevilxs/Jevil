@@ -79,7 +79,7 @@ Tabs.Main:AddButton({
 		for _, v in pairs(game:GetDescendants()) do
         if v.Name == "CoinMesh" and v:IsA("BasePart") then
             v.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
-            wait(0.1)
+            wait(0.01)
         end
 		end
 		end})
