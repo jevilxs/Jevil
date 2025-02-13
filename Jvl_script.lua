@@ -1,8 +1,8 @@
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/trinyxScripts/nexus-ui/refs/heads/main/nexuslib.lua"))()
 local main = Library:new{
 	Name = "Jevilxs (discord: kolivandel)",
-	Style = "Flex",
-	Theme = "Dark",
+	Style = "Fixed",
+	Theme = "Nexus",
     KeySystem = false
 }
 local Tab1 = main:CreateTab({Icon = "rbxassetid://83262328821985",Text = "Update"})
