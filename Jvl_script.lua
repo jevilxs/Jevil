@@ -86,60 +86,77 @@ Tabs.Main:AddButton({
 end
 
 Tabs.Main:AddButton({
-        Title = "Noclip",
+        Title = "Noclip [Работает но с недочетами. Буду фиксить!]",
         Description = "Включает функцию прохода сквозь стены",
         Callback = function()
--- Получаем ссылку на игрока и его персонажа
+			
 local player = game.Players.LocalPlayer
 local character = player.Character or player.CharacterAdded:Wait()
+local noclip = false
+local runService = game:GetService("RunService")
+local noclipConnection
 
+-- Создаём ScreenGui
+local screenGui = Instance.new("ScreenGui")
+screenGui.Parent = player:FindFirstChildOfClass("PlayerGui")
 
--- Создаем кнопку
+-- Создаём основную кнопку
+local button = Instance.new("TextButton")
+button.Size = UDim2.new(0, 100, 0, 50)
+button.Position = UDim2.new(0.5, -50, 0.5, -25)
+button.Text = "Noclip"
+button.Font = Enum.Font.GothamBold
+button.TextSize = 18
+button.TextColor3 = Color3.fromRGB(255, 255, 255)
+button.Parent = screenGui
+button.Draggable = true
+button.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+button.BackgroundTransparency = 0.7
 
--- Переменная для отслеживания состояния (включен ли режим)
-local canPassThroughWalls = false
+-- Создаём кнопку закрытия
+local closeButton = Instance.new("TextButton")
+closeButton.Size = UDim2.new(0, 30, 0, 30)
+closeButton.Position = UDim2.new(1, -30, 0, 0)
+closeButton.Text = "X"
+closeButton.Font = Enum.Font.GothamBold
+closeButton.TextSize = 18
+closeButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+closeButton.Parent = button
+closeButton.BackgroundTransparency = 1
 
--- Функция для включения/выключения прохождения через стены
-local function toggleWallPass()
-    canPassThroughWalls = not canPassThroughWalls
+-- Функция для переключения noclip
+local function toggleNoclip()
+    noclip = not noclip
+    button.BackgroundColor3 = noclip and Color3.fromRGB(255, 0, 255) or Color3.fromRGB(0, 0, 0)
     
-    -- Включаем или выключаем коллизию для всех частей персонажа
-    for _, part in pairs(character:GetDescendants()) do
-        if part:IsA("BasePart") then
-            part.CanCollide = not canPassThroughWalls
-        end
-    end
-    
-end
-
--- Обработчик нажатия на кнопку
-toggleWallPass()
-
--- Функция, которая проверяет и поддерживает состояние noclip
-local function maintainNoClip()
-    while true do
-        if canPassThroughWalls then
-            -- Если режим включен, то принудительно убираем коллизию с персонажа
+    if noclip then
+        noclipConnection = runService.Stepped:Connect(function()
             for _, part in pairs(character:GetDescendants()) do
                 if part:IsA("BasePart") then
                     part.CanCollide = false
                 end
             end
-        else
-            -- Если режим выключен, восстанавливаем коллизию
-            for _, part in pairs(character:GetDescendants()) do
-                if part:IsA("BasePart") then
-                    part.CanCollide = true
-                end
+        end)
+    else
+        if noclipConnection then
+            noclipConnection:Disconnect()
+            noclipConnection = nil
+        end
+        for _, part in pairs(character:GetDescendants()) do
+            if part:IsA("BasePart") then
+                part.CanCollide = true
             end
         end
-        wait(0.1) -- Проверяем состояние каждые 0.1 секунды
     end
 end
 
--- Запуск проверки состояния noclip
-spawn(maintainNoClip)
+-- Подключаем клик по кнопке
+button.MouseButton1Click:Connect(toggleNoclip)
 
+-- Закрытие GUI при нажатии на крестик
+closeButton.MouseButton1Click:Connect(function()
+    screenGui:Destroy()
+end)
 
 			
 end})
