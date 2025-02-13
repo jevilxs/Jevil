@@ -459,6 +459,27 @@ Tabs.Teleport:AddButton({
 	end		
 end})
 
+Tabs.Option:AddButton({
+        Title = "Reset character",
+        Description = "Ресет, но тепает сразу на координаты смерти",
+        Callback = function()
+local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+
+local function killAndRespawn()
+    local position = character:GetPrimaryPartCFrame()
+    character:BreakJoints()
+    
+    player.CharacterAdded:Wait()
+    task.wait(0.5)
+    player.Character:SetPrimaryPartCFrame(position)
+end
+
+killAndRespawn()
+
+end})
+
+
 
 
 
