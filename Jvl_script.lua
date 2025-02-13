@@ -309,8 +309,11 @@ local SliderTab5 = Tab5:Slider({
          max = 200,
          Default = 16,
          callback = function(v)
-              if v > 50 then
-                     print(v)
-                     end
-              end
-})
+		local player = game.Players.LocalPlayer
+		local character = player.Character or player.CharacterAdded:Wait()
+		local humanoid = character:FindFirstChildOfClass("Humanoid")
+		local newSpeed = v
+		if humanoid then
+		    humanoid.WalkSpeed = newSpeed
+		end
+end})
