@@ -3,7 +3,7 @@ local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/triny
 local main = Library:new{
 	Name = "Jevilxs (discord: kolivandel)",
 	Style = "Bottom",
-	Theme = "DarkBlue",
+	Theme = "Nexus",
     KeySystem = false
 }
 local Tab1 = main:CreateTab({Icon = "rbxassetid://83262328821985",Text = "Update"})
