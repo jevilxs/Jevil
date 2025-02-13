@@ -6,10 +6,10 @@ local main = Library:new{
     KeySystem = false
 }
 local Tab1 = main:CreateTab({Icon = "rbxassetid://83262328821985",Text = "Update"})
-local Tab2 = main:CreateTab({Icon = "rbxassetid://83262328821985",Text = "Main"})
-local Tab3 = main:CreateTab({Icon = "rbxassetid://83262328821985",Text = "Misc"})
-local Tab4 = main:CreateTab({Icon = "rbxassetid://83262328821985",Text = "Teleports"})
-local Tab5 = main:CreateTab({Icon = "rbxassetid://83262328821985",Text = "Player"})
+local Tab2 = main:CreateTab({Icon = "rbxassetid://10709752035",Text = "Main"})
+local Tab3 = main:CreateTab({Icon = "rbxassetid://10734963400",Text = "Misc"})
+local Tab4 = main:CreateTab({Icon = "rbxassetid://10747372167",Text = "Teleports"})
+local Tab5 = main:CreateTab({Icon = "rbxassetid://10709807111",Text = "Player"})
 
 local label = Tab1:Label({
 	Name = "Изменена GUI"
