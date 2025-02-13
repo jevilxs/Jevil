@@ -1,82 +1,57 @@
-local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
-local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
-local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/trinyxScripts/nexus-ui/refs/heads/main/nexuslib.lua"))()
+local main = Library:new{
+	Name = "Jevilxs (discord: kolivandel)",
+	Style = "Bottom",
+	Theme = "Dark",
+    KeySystem = false
+}
+local Tab1 = main:CreateTab({Icon = "rbxassetid://83262328821985",Text = "Update"})
+local Tab2 = main:CreateTab({Icon = "rbxassetid://83262328821985",Text = "Main"})
+local Tab3 = main:CreateTab({Icon = "rbxassetid://83262328821985",Text = "Misc"})
+local Tab4 = main:CreateTab({Icon = "rbxassetid://83262328821985",Text = "Teleports"})
+local Tab5 = main:CreateTab({Icon = "rbxassetid://83262328821985",Text = "Player"})
 
-local Window = Fluent:CreateWindow({
-    Title = "WallperX ",
-    SubTitle = "by jevilxs & 8360 (DISCORD: kolivaldel#9384)",
-    TabWidth = 160,
-    Size = UDim2.fromOffset(580, 460),
-    Acrylic = true, -- The blur may be detectable, setting this to false disables blur entirely
-    Theme = "Amethyst",
-    MinimizeKey = Enum.KeyCode.RightControl -- Used when theres no MinimizeKeybind
+local label = Tab1:Label({
+	Name = "Изменена GUI"
+})
+local label = Tab1:Label({
+	Name = "Добавлены новые скрипты"
+})
+local label = Tab1:Label({
+	Name = "Добавлены новые функции: GodMode, Noclip, ResetTP ..."
 })
 
---Fluent provides Lucide Icons https://lucide.dev/icons/ for the tabs, icons are optional
-local Tabs = {
-    Update = Window:AddTab({ Title = "Update", Icon = "rbxassetid://10709752035" }),
-    Main = Window:AddTab({ Title = "Main", Icon = "rbxassetid://10723343537" }),
-	Misc = Window:AddTab({ Title = "Misc", Icon = "rbxassetid://10734963400" }),
-	Basic = Window:AddTab({ Title = "Player", Icon = "rbxassetid://10747372167" }),
-    Settings = Window:AddTab({ Title = "Settings", Icon = "settings" }),	
-    Teleport = Window:AddTab({ Title = "Teleports", Icon = "rbxassetid://10709807111" })                                       
-}
 
-local Options = Fluent.Options
+local label = Tab2:Label({
+	Name = "Тут основные функции"
+})
 
-do
-    Tabs.Update:AddParagraph({
-        Title = "Что нового?",
-        Content = ""
-    })
-    Tabs.Update:AddParagraph({
-        Title = "Исправлены ошибки , и посторонние краши с скриптом <3",
-        Content = "Теперь клиент будет спокойно без ошибок работать!"
-    })
-    Tabs.Update:AddParagraph({
-        Title = "Новые функции!",
-        Content = "Добавлен раздел Teleports , список других скриптов с авто инжектом и т.д."
-    })
-    Tabs.Update:AddParagraph({
-        Title = "Сделано новые пункты в некоторых категориях",
-        Content = "Добавлен Noclip ; GodMode; Teleports; ResetTeleport и т.д.."
-    })
+local btn = Tab2:Button({
+	Name = "Reset Character", 
+	callback = function()
 
-	
-    Tabs.Main:AddParagraph({
-        Title = "Main scripts",
-        Content = "Тут находятся основные скрипты."
-    })
+        local player = game.Players.LocalPlayer
 
+        local function killAndRespawn()
+            local character = player.Character or player.CharacterAdded:Wait()
+            local position = character:GetPrimaryPartCFrame()
+            
+            character.Humanoid.Health = 0 
+            
+            local newCharacter = player.CharacterAdded:Wait()
+            task.wait(0.1)
+            newCharacter:SetPrimaryPartCFrame(position)
+        end
 
-
-    Tabs.Main:AddButton({
-        Title = "Reset character",
-        Description = "Убивает персонажа и тепает на точку смерти",
-        Callback = function()
-				
-local player = game.Players.LocalPlayer
-
-local function killAndRespawn()
-    local character = player.Character or player.CharacterAdded:Wait()
-    local position = character:GetPrimaryPartCFrame()
-    
-    character.Humanoid.Health = 0 
-    
-    local newCharacter = player.CharacterAdded:Wait()
-    task.wait(0.1)
-    newCharacter:SetPrimaryPartCFrame(position)
-end
-
-killAndRespawn()
-	
+        killAndRespawn()
 
 end})
 
-    Tabs.Main:AddButton({
-        Title = "GodMode",
-        Description = "Включает режим бессмертия",
-        Callback = function()	
+
+local btn2 = Tab2:Button({
+	Name = "GodMode", 
+	callback = function()
+	
 
 local player = game.Players.LocalPlayer
 local character = player.Character or player.CharacterAdded:Wait()
@@ -100,10 +75,10 @@ makeImmortal()
     end})
 
 	
-    Tabs.Main:AddButton({
-        Title = "AntiRagdoll",
-        Description = "Выключает ragdoll.",
-        Callback = function()
+local btn3 = Tab2:Button({
+	Name = "Reset Character", 
+	callback = function()
+
 game:GetService("ReplicatedStorage").LocalRagdollEvent:Destroy()
 local player = game.Players.LocalPlayer
 
@@ -125,10 +100,9 @@ end
 end
     })
 
-Tabs.Main:AddButton({
-        Title = "Сбор монет",
-        Description = "Собирает китайские монеты.",
-        Callback = function()
+local btn4 = Tab2:Button({
+	Name = "Сбор монет", 
+	callback = function()
 		for _, v in pairs(game:GetDescendants()) do
         if v.Name == "CoinMesh" and v:IsA("BasePart") then
             v.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
@@ -139,10 +113,9 @@ Tabs.Main:AddButton({
 	
 end
 
-Tabs.Main:AddButton({
-        Title = "Noclip [Работает но с недочетами. Буду фиксить!]",
-        Description = "Включает функцию прохода сквозь стены",
-        Callback = function()
+local btn3 = Tab2:Button({
+	Name = "Noclip [Beta]", 
+	callback = function()
 			
 local player = game.Players.LocalPlayer
 local character = player.Character or player.CharacterAdded:Wait()
@@ -214,10 +187,9 @@ end)
 
 			
 end})
-Tabs.Main:AddButton({
-        Title = "Chat spying",
-        Description = "Включает spying чата.",
-        Callback = function()
+local btn5 = Tab2:Button({
+	Name = "Chat Spying [Beta]", 
+	callback = function()
 enabled = true
 --if true will xhexk your messages too
 spyOnMyself = true
@@ -245,7 +217,7 @@ if _G.chatSpyInstance == instance then
 if p==player and msg:lower():sub(1,6)==".lu" then
 enabled = not enabled
 wait(0.3)
-privateProperties.Text = "{LOLLYPOP SPY "..(enabled and "EN" or "DIS").."ABLED}"
+privateProperties.Text = "{JEVIL SPY "..(enabled and "EN" or "DIS").."ABLED}"
 StarterGui:SetCore("ChatMakeSystemMessage",privateProperties)
 elseif enabled and (spyOnMyself==true or p~=player) then
 msg = msg:gsub("[\n\r]",''):gsub("\t",' '):gsub("[ ]+",' ')
@@ -275,7 +247,7 @@ end
 Players.PlayerAdded:Connect(function(p)
 p.Chatted:Connect(function(msg) onChatted(p,msg) end)
 end)
-privateProperties.Text = "{LOLLYPOP SPY "..(enabled and "EN" or "DIS").."ABLED}"
+privateProperties.Text = "{JEVIL SPY "..(enabled and "EN" or "DIS").."ABLED}"
 player:WaitForChild("PlayerGui"):WaitForChild("Chat")
 StarterGui:SetCore("ChatMakeSystemMessage",privateProperties)
 wait(3)
@@ -283,270 +255,3 @@ local chatFrame = player.PlayerGui.Chat.Frame
 chatFrame.ChatChannelParentFrame.Visible = true
 chatFrame.ChatBarParentFrame.Position = chatFrame.ChatChannelParentFrame.Position+UDim2.new(UDim.new(),chatFrame.ChatChannelParentFrame.Size.Y)
 end})
-
-
-Tabs.Misc:AddParagraph({
-        Title = "Misc scripts",
-        Content = "Тут находятся дополнительные скрипты."
-    })
-
-local Slider = Tabs.Basic:AddSlider("Slider", {
-        Title = "Speed",
-        Description = "Меняет скорость игрока.",
-        Default = 16,
-        Min = 0,
-        Max = 300,
-        Rounding = 1,
-        Callback = function(Value)
-            print("Slider was changed:", Value)
-        end
-    })
-
-    Slider:OnChanged(function(Value)
-
-local player = game.Players.LocalPlayer
-local character = player.Character or player.CharacterAdded:Wait()
-local humanoid = character:FindFirstChildOfClass("Humanoid")
-local newSpeed = Value
-if humanoid then
-    humanoid.WalkSpeed = newSpeed
-end
-
-end)
-Slider:SetValue(16)
-
-
- local Slider = Tabs.Basic:AddSlider("Slider", {
-        Title = "Gravity",
-        Description = "Меняет гравитацию игрока.",
-        Default = 196.2,
-        Min = 0,
-        Max = 196.2,
-        Rounding = 1,
-        Callback = function(Value)
-            print("Slider was changed:", Value)
-        end
-    })
-
-    Slider:OnChanged(function(Value)
-        local newGravity = Value -- Установите нужное значение гравитации (по умолчанию 196.2)
-
-game.Workspace.Gravity = newGravity
-    end)
-
-    Slider:SetValue(196.2)
-
-    local Slider = Tabs.Basic:AddSlider("Slider", {
-        Title = "Jump Power",
-        Description = "Меняет силу прыжка игрока.",
-        Default = 50,
-        Min = 0,
-        Max = 350,
-        Rounding = 1,
-        Callback = function(Value)
-            print("Slider was changed:", Value)
-        end
-    })
-
-    Slider:OnChanged(function(Value)
-        local newJumpPower = Value 
-
-local player = game.Players.LocalPlayer
-local character = player.Character or player.CharacterAdded:Wait()
-local humanoid = character:FindFirstChildOfClass("Humanoid")
-
-if humanoid then
-    humanoid.UseJumpPower = true
-    humanoid.JumpPower = newJumpPower
-    
-end
-    end)
-
-    Slider:SetValue(50)
-
-
-local Dropdown = Tabs.Basic:AddDropdown("Dropdown", {
-    Title = "Gravity presets",
-    Values = {"Default gravity", "Low gravity"},
-    Multi = false,
-    Default = 1,
-})
-
-Dropdown:SetValue("Default gravity")
-
-Dropdown:OnChanged(function(Value)
-    print("Dropdown changed:", Value)
-
-    if Value == "Default gravity" then
-        local newGravity = 196.2
-game.Workspace.Gravity = newGravity
-		local newJumpPower = 50 
-local player = game.Players.LocalPlayer
-local character = player.Character or player.CharacterAdded:Wait()
-local humanoid = character:FindFirstChildOfClass("Humanoid")
-if humanoid then
-    humanoid.UseJumpPower = true
-    humanoid.JumpPower = newJumpPower
-end
-    elseif Value == "Low gravity" then
-        local newGravity = 47.7
-game.Workspace.Gravity = newGravity
-		local newJumpPower = 48.8 
-local player = game.Players.LocalPlayer
-local character = player.Character or player.CharacterAdded:Wait()
-local humanoid = character:FindFirstChildOfClass("Humanoid")
-if humanoid then
-    humanoid.UseJumpPower = true
-    humanoid.JumpPower = newJumpPower
-end
-    end
-end)
-
-
-
-
-Tabs.Misc:AddButton({
-        Title = "Jerk off",
-        Description = "",
-        Callback = function()
-loadstring(game:HttpGet("https://pastefy.app/YZoglOyJ/raw"))()
-end})
-
-Tabs.Main:AddButton({
-        Title = "Infinite Yield",
-        Description = "Включает Infinite Yield",
-        Callback = function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source"))()
-end})
-
-Tabs.Misc:AddButton({
-        Title = "Orca hub",
-        Description = "",
-        Callback = function()
-loadstring(game:HttpGetAsync('https://raw.githubusercontent.com/richie0866/orca/master/public/latest.lua'))()
-end})
-
-Tabs.Misc:AddButton({
-        Title = "Emotes",
-        Description = "",
-        Callback = function()
-loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/Gi7331/scripts/main/Emote.lua"))()
-end})
-
-Tabs.Misc:AddButton({
-        Title = "Canon",
-        Description = "",
-        Callback = function()
-loadstring(game:HttpGet('https://raw.githubusercontent.com/GhostPlayer352/Test4/main/Cannon%20Ball'))()
-end})
-
-Tabs.Misc:AddButton({
-        Title = "Eazvy hub",
-        Description = "",
-        Callback = function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Eazvy/public-scripts/main/Universal_Animations_Emotes.lua"))()
-end})
-
-Tabs.Misc:AddButton({
-        Title = "System Broken",
-        Description = "",
-        Callback = function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/H20CalibreYT/SystemBroken/main/script"))()
-end})
-
-Tabs.Misc:AddButton({
-        Title = "Nitrogen",
-        Description = "Password - nitrogencomingback",
-        Callback = function()
-loadstring(game:HttpGet(('https://raw.githubusercontent.com/nitrogenhbexp/beta-script/refs/heads/main/script'),true))()
-end})
-
-
-Tabs.Teleport:AddButton({
-        Title = "В данном разделе тепает у места РГЧ",
-        Description = "Сделано by jevilxs",
-        Callback = function()
-end})
-Tabs.Teleport:AddButton({
-        Title = "Телепорт на спавн комнату",
-        Description = "Нажми чтобы телепортироваться!",
-        Callback = function()
-	local targetObject = workspace:GetChildren()[90]
-	if targetObject then
-	    local player = game.Players.LocalPlayer
-	    local targetPosition = targetObject.Position + Vector3.new(0, 5, 0)  
-	    player.Character:SetPrimaryPartCFrame(CFrame.new(targetPosition))
-	end		
-end})
-Tabs.Teleport:AddButton({
-        Title = "Телепорт в вип комнату",
-        Description = "Нажми чтобы телепортироваться!",
-        Callback = function()
-	local targetObject = workspace.VIP:GetChildren()[14]:GetChildren()[2]:GetChildren()[2]:GetChildren()[16]
-	if targetObject then
-	    local player = game.Players.LocalPlayer
-	    local targetPosition = targetObject.Position + Vector3.new(0, 5, 0)  
-	    player.Character:SetPrimaryPartCFrame(CFrame.new(targetPosition))
-	end		
-end})
-Tabs.Teleport:AddButton({
-        Title = "Телепорт в розовую комнату",
-        Description = "Нажми чтобы телепортироваться!",
-        Callback = function()
-	local targetObject = workspace.map:GetChildren()[63].Bed.BedFrame:GetChildren()[2]
-	if targetObject then
-	    local player = game.Players.LocalPlayer
-	    local targetPosition = targetObject.Position + Vector3.new(0, 5, 0)  
-	    player.Character:SetPrimaryPartCFrame(CFrame.new(targetPosition))
-	end		
-end})
-Tabs.Teleport:AddButton({
-        Title = "Телепорт к лестнице",
-        Description = "Нажми чтобы телепортироваться!",
-        Callback = function()
-	local targetObject = workspace.map:GetChildren()[175]
-	if targetObject then
-	    local player = game.Players.LocalPlayer
-	    local targetPosition = targetObject.Position + Vector3.new(0, 5, 0)  
-	    player.Character:SetPrimaryPartCFrame(CFrame.new(targetPosition))
-	end		
-end})
-
-
-
--- Addons:
--- SaveManager (Allows you to have a configuration system)
--- InterfaceManager (Allows you to have a interface managment system)
-
--- Hand the library over to our managers
-SaveManager:SetLibrary(Fluent)
-InterfaceManager:SetLibrary(Fluent)
-
--- Ignore keys that are used by ThemeManager.
--- (we dont want configs to save themes, do we?)
-SaveManager:IgnoreThemeSettings()
-
--- You can add indexes of elements the save manager should ignore
-SaveManager:SetIgnoreIndexes({})
-
--- use case for doing it this way:
--- a script hub could have themes in a global folder
--- and game configs in a separate folder per game
-InterfaceManager:SetFolder("FluentScriptHub")
-SaveManager:SetFolder("FluentScriptHub/specific-game")
-
-InterfaceManager:BuildInterfaceSection(Tabs.Settings)
-SaveManager:BuildConfigSection(Tabs.Settings)
-
-
-Window:SelectTab(5)
-
-Fluent:Notify({
-    Title = "WallperX by jevilxs & 8360 (DISCORD: kolivaldel#9384)",
-    Content = "Скрипт полностью загрузился, удачного пользования!",
-    Duration = 10
-})
-
--- You can use the SaveManager:LoadAutoloadConfig() to load a config
--- which has been marked to be one that auto loads!
-SaveManager:LoadAutoloadConfig()
