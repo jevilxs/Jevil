@@ -37,6 +37,10 @@ do
         Title = "Новые функции!",
         Content = "Добавлен раздел Teleports , список других скриптов с авто инжектом и т.д."
     })
+    Tabs.Update:AddParagraph({
+        Title = "Сделано новые пункты в некоторых категориях",
+        Content = "Добавлен Noclip ; GodMode; Teleports; ResetTeleport и т.д.."
+    })
 
 	
     Tabs.Main:AddParagraph({
@@ -68,6 +72,32 @@ killAndRespawn()
 	
 
 end})
+
+    Tabs.Main:AddButton({
+        Title = "GodMode",
+        Description = "Включает режим бессмертия",
+        Callback = function()	
+
+local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+
+-- Функция делает игрока бессмертным
+local function makeImmortal()
+    if character then
+        local humanoid = character:FindFirstChildOfClass("Humanoid")
+        if humanoid then
+            humanoid.HealthChanged:Connect(function()
+                humanoid.Health = humanoid.MaxHealth -- Не даем здоровью упасть
+            end)
+        end
+    end
+end
+
+
+makeImmortal()
+
+		
+    end})
 
 	
     Tabs.Main:AddButton({
