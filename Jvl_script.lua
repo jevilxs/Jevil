@@ -20,6 +20,7 @@ local Tabs = {
 	Basic = Window:AddTab({ Title = "Player", Icon = "rbxassetid://10747372167" }),
     Settings = Window:AddTab({ Title = "Settings", Icon = "settings" }),	
     Teleport = Window:AddTab({ Title = "Teleports", Icon = "rbxassetid://10709768939" })
+    Options = Window:AddTab({ Title = "Character", Icon = "rbxassetid://10747372167" }),
 }
 
 local Options = Fluent.Options
