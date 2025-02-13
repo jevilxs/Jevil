@@ -303,4 +303,14 @@ local ftab4 = Tab4:Button({
 	end			
 end})	
 
-
+local SliderTab5 = Tab5:Slider({
+         Name = "Speed",
+         min = 0,
+         max = 200,
+         Default = 16,
+         callback = function(v)
+              if v > 50 then
+                     print(v)
+                     end
+              end
+})
