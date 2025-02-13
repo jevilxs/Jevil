@@ -1,7 +1,7 @@
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/trinyxScripts/nexus-ui/refs/heads/main/nexuslib.lua"))()
 local main = Library:new{
 	Name = "Jevilxs (discord: kolivandel)",
-	Style = "Bottom",
+	Style = "Flex",
 	Theme = "Dark",
     KeySystem = false
 }
