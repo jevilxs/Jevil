@@ -47,6 +47,30 @@ do
 
 
     Tabs.Main:AddButton({
+        Title = "Reset character",
+        Description = "Убивает персонажа и тепает на точку смерти",
+        Callback = function()
+				
+local player = game.Players.LocalPlayer
+
+local function killAndRespawn()
+    local character = player.Character or player.CharacterAdded:Wait()
+    local position = character:GetPrimaryPartCFrame()
+    
+    character.Humanoid.Health = 0 -- Гарантированное убийство
+    
+    local newCharacter = player.CharacterAdded:Wait()
+    task.wait(0.5)
+    newCharacter:SetPrimaryPartCFrame(position)
+end
+
+killAndRespawn()
+	
+
+end})
+
+	
+    Tabs.Main:AddButton({
         Title = "AntiRagdoll",
         Description = "Выключает ragdoll.",
         Callback = function()
