@@ -302,3 +302,19 @@ local ftab4 = Tab4:Button({
 	    player.Character:SetPrimaryPartCFrame(CFrame.new(targetPosition))
 	end			
 end})	
+
+
+local Speed = Tab5:Slider({
+         Name = "Speed",
+         min = 0,
+         max = 200,
+         Default = 16,
+         callback = function(Value)
+	local player = game.Players.LocalPlayer
+	local character = player.Character or player.CharacterAdded:Wait()
+	local humanoid = character:FindFirstChildOfClass("Humanoid")
+	local newSpeed = Value
+	if humanoid then
+	    humanoid.WalkSpeed = newSpeed
+	end
+})
