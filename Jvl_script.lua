@@ -1,7 +1,7 @@
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/trinyxScripts/nexus-ui/refs/heads/main/nexuslib.lua"))()
 Custom = {
 		isDark = true,
-		BackgroundColor = Color3.fromRGB(15, 24, 32),
+		BackgroundColor = Color3.fromRGB(232,136,234),
 
 		ButtonColor = Color3.fromRGB(22, 36, 49),
 		ButtonInputStrokeColor = Color3.fromRGB(97, 97, 97),
