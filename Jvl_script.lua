@@ -1,8 +1,55 @@
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/trinyxScripts/nexus-ui/refs/heads/main/nexuslib.lua"))()
+Custom = {
+		isDark = true,
+		BackgroundColor = Color3.fromRGB(15, 24, 32),
+
+		ButtonColor = Color3.fromRGB(22, 36, 49),
+		ButtonInputStrokeColor = Color3.fromRGB(97, 97, 97),
+		--dropdown
+		DropDownColor = Color3.fromRGB(22, 36, 49),
+		DropDownOptionsColor = Color3.fromRGB(46, 77, 104),
+		DropDownOptionsInputStrokeColor = Color3.fromRGB(97, 97, 97),
+		DropDownInputStrokeColor = Color3.fromRGB(97, 97, 97),
+		--label
+		LabelColor = Color3.fromRGB(22, 36, 49),
+		LabelInputStrokeColor = Color3.fromRGB(10, 91, 97),
+		--slider
+		SliderColor = Color3.fromRGB(22, 36, 49),
+		SliderBackColor = Color3.fromRGB(14, 21, 33),
+		SliderFillColor = Color3.fromRGB(39, 59, 91),
+		SliderStrokeAll = Color3.fromRGB(97, 97, 97),
+		--toggle
+		ToggleColor = Color3.fromRGB(22, 36, 49),
+		ToggleCheckColorInactive = Color3.fromRGB(15, 24, 33),
+		ToggleCheckColor = Color3.fromRGB(42, 128, 136),
+		--not naming this shit
+		TopBar = Color3.fromRGB(),
+		TopBarInputStrokeColor = Color3.fromRGB(10, 16, 22),
+
+		TabButtonActive = Color3.fromRGB(255, 255, 255),
+		TabButtonInactive = Color3.fromRGB(150, 182, 182),
+		DockColor = Color3.fromRGB(15, 24, 32),
+		TextColor = Color3.fromRGB(255,255,255),
+		--Pops Ups
+		PopUpColor = Color3.fromRGB(22, 36, 48),
+		PopUpButtonColor = Color3.fromRGB(36, 60, 98),
+		PopUpStroke = Color3.fromRGB(86, 86, 86),
+		InputStrokeColor = Color3.fromRGB(97, 97, 97),
+
+		TextInputColor = Color3.fromRGB(22, 36, 49),
+		TabColor = Color3.fromRGB(134, 134, 134),
+		NotificationColor = Color3.fromRGB(22, 36, 48),
+		NotificationInputStrokeColor = Color3.fromRGB(199, 138, 16),
+		NotificationSeperatorColor = Color3.fromRGB(42, 56, 68),
+		
+		SeperatorColor = Color3.fromRGB(22, 36, 49),
+		SeperatorStrokeColor= Color3.fromRGB(75, 75, 75)
+	},
+
 local main = Library:new{
 	Name = "Jevilxs (discord: kolivandel)",
-	Style = "Fixed",
-	Theme = "Nexus",
+	Style = "Bottom",
+	Theme = Custom,
     KeySystem = false
 }
 local Tab1 = main:CreateTab({Icon = "rbxassetid://83262328821985",Text = "Update"})
