@@ -15,11 +15,11 @@ local Window = Fluent:CreateWindow({
 --Fluent provides Lucide Icons https://lucide.dev/icons/ for the tabs, icons are optional
 local Tabs = {
     Update = Window:AddTab({ Title = "Update", Icon = "rbxassetid://10709752035" }),
-    Main = Window:AddTab({ Title = "Main", Icon = "rbxassetid://10709807111" }),
+    Main = Window:AddTab({ Title = "Main", Icon = "rbxassetid://10723343537" }),
 	Misc = Window:AddTab({ Title = "Misc", Icon = "rbxassetid://10734963400" }),
 	Basic = Window:AddTab({ Title = "Player", Icon = "rbxassetid://10747372167" }),
     Settings = Window:AddTab({ Title = "Settings", Icon = "settings" }),	
-    Teleport = Window:AddTab({ Title = "Teleports", Icon = "rbxassetid://10709768939" })                                       
+    Teleport = Window:AddTab({ Title = "Teleports", Icon = "rbxassetid://10709807111" })                                       
 }
 
 local Options = Fluent.Options
