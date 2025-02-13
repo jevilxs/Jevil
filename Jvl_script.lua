@@ -51,8 +51,7 @@ end})
 local btn2 = Tab2:Button({
 	Name = "GodMode", 
 	callback = function()
-	
-
+			
 	local player = game.Players.LocalPlayer
 	local character = player.Character or player.CharacterAdded:Wait()
 	
@@ -71,13 +70,11 @@ local btn2 = Tab2:Button({
 	
 	makeImmortal()
 
-		
-    end
-})
+			
+end})
 
-	
 local btn3 = Tab2:Button({
-	Name = "Reset Character", 
+	Name = "AntiRagdoll", 
 	callback = function()
 
 	game:GetService("ReplicatedStorage").LocalRagdollEvent:Destroy()
@@ -98,26 +95,27 @@ local btn3 = Tab2:Button({
 	if player.Character then
 	    killCharacter()
 	end
-    end
-})
+
+
+end})
 
 local btn4 = Tab2:Button({
 	Name = "Сбор монет", 
 	callback = function()
-		for _, v in pairs(game:GetDescendants()) do
+
+	for _, v in pairs(game:GetDescendants()) do
         if v.Name == "CoinMesh" and v:IsA("BasePart") then
             v.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
-            wait(0.01)
+            wait(0.1)
         end
-		end
-		end})
-	
-end
-
-local btn3 = Tab2:Button({
-	Name = "Noclip [Beta]", 
-	callback = function()
+        end
 			
+end})
+
+local btn4 = Tab2:Button({
+	Name = "Noclip", 
+	callback = function()
+
 	local player = game.Players.LocalPlayer
 	local character = player.Character or player.CharacterAdded:Wait()
 	local noclip = false
@@ -186,11 +184,13 @@ local btn3 = Tab2:Button({
 	    screenGui:Destroy()
 	end)
 
-    end
-})
-local btn5 = Tab2:Button({
-	Name = "Chat Spying [Beta]", 
+			
+end})
+
+local btn4 = Tab2:Button({
+	Name = "ChatSpying", 
 	callback = function()
+
 	enabled = true
 	--if true will xhexk your messages too
 	spyOnMyself = true
@@ -218,7 +218,7 @@ local btn5 = Tab2:Button({
 	if p==player and msg:lower():sub(1,6)==".lu" then
 	enabled = not enabled
 	wait(0.3)
-	privateProperties.Text = "{JEVIL SPY "..(enabled and "EN" or "DIS").."ABLED}"
+	privateProperties.Text = "{LOLLYPOP SPY "..(enabled and "EN" or "DIS").."ABLED}"
 	StarterGui:SetCore("ChatMakeSystemMessage",privateProperties)
 	elseif enabled and (spyOnMyself==true or p~=player) then
 	msg = msg:gsub("[\n\r]",''):gsub("\t",' '):gsub("[ ]+",' ')
@@ -248,12 +248,14 @@ local btn5 = Tab2:Button({
 	Players.PlayerAdded:Connect(function(p)
 	p.Chatted:Connect(function(msg) onChatted(p,msg) end)
 	end)
-	privateProperties.Text = "{JEVIL SPY "..(enabled and "EN" or "DIS").."ABLED}"
+	privateProperties.Text = "{LOLLYPOP SPY "..(enabled and "EN" or "DIS").."ABLED}"
 	player:WaitForChild("PlayerGui"):WaitForChild("Chat")
 	StarterGui:SetCore("ChatMakeSystemMessage",privateProperties)
 	wait(3)
 	local chatFrame = player.PlayerGui.Chat.Frame
 	chatFrame.ChatChannelParentFrame.Visible = true
 	chatFrame.ChatBarParentFrame.Position = chatFrame.ChatChannelParentFrame.Position+UDim2.new(UDim.new(),chatFrame.ChatChannelParentFrame.Size.Y)
-    end
-})
+	end})
+
+			
+end})		
