@@ -325,12 +325,16 @@ local SliderJumpPower = Tab5:Slider({
          Default = 50,
          callback = function(v)
 
+        local newJumpPower = v
+
 	local player = game.Players.LocalPlayer
 	local character = player.Character or player.CharacterAdded:Wait()
 	local humanoid = character:FindFirstChildOfClass("Humanoid")
 	
 	if humanoid then
-	    humanoid.JumpPower = v
+	    humanoid.UseJumpPower = true
+	    humanoid.JumpPower = newJumpPower
+	    
 	end
 end})		
 local SliderGravity = Tab5:Slider({
