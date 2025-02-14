@@ -21,6 +21,9 @@ local label = Tab1:Label({
 local label = Tab1:Label({
 	Name = "Добавлены новые функции: GodMode, Noclip, ResetTP ..."
 })
+local label = Tab1:Label({
+	Name = "В настройках можно изменить тему и задать кнопку бинда"
+})
 
 
 local label = Tab2:Label({
