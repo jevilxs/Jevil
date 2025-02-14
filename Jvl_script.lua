@@ -332,6 +332,7 @@ local SliderJumpPower = Tab5:Slider({
 	if humanoid then
 	    humanoid.JumpPower = v
 	end
+end})		
 local SliderGravity = Tab5:Slider({
          Name = "Gravity (Стандарт = 196)",
          min = 0,
