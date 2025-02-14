@@ -304,7 +304,7 @@ local ftab4 = Tab4:Button({
 	end			
 end})	
 
-local SliderTab5 = Tab5:Slider({
+local SliderSpeed = Tab5:Slider({
          Name = "Speed",
          min = 0,
          max = 200,
@@ -317,4 +317,45 @@ local SliderTab5 = Tab5:Slider({
 		if humanoid then
 		    humanoid.WalkSpeed = newSpeed
 		end
+end})
+local SliderJumpPower = Tab5:Slider({
+         Name = "JumpPower (Стандарт = 50)",
+         min = 0,
+         max = 200,
+         Default = 50,
+         callback = function(v)
+
+	local player = game.Players.LocalPlayer
+	local character = player.Character or player.CharacterAdded:Wait()
+	local humanoid = character:FindFirstChildOfClass("Humanoid")
+	
+	if humanoid then
+	    humanoid.JumpPower = v
+	end
+local SliderGravity = Tab5:Slider({
+         Name = "Gravity (Стандарт = 196)",
+         min = 0,
+         max = 200,
+         Default = 196,
+         callback = function(v)
+
+	local player = game.Players.LocalPlayer
+	
+	local function onCharacterAdded(character)
+	    local humanoid = character:WaitForChild("Humanoid")  -- Ждём загрузки Humanoid
+	    humanoid:SetStateEnabled(Enum.HumanoidStateType.Physics, true)  -- Включаем физику
+	    game:GetService("RunService").Stepped:Connect(function()
+	        if character and character.Parent then
+	            character.HumanoidRootPart.Velocity = Vector3.new(0, v, 0) -- Изменяем гравитацию для игрока
+	        end
+	    end)
+	end
+	
+	player.CharacterAdded:Connect(onCharacterAdded)
+	
+	if player.Character then
+	    onCharacterAdded(player.Character)
+	end
+			
+			
 end})
