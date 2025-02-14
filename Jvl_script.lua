@@ -339,24 +339,7 @@ local SliderGravity = Tab5:Slider({
          max = 200,
          Default = 196,
          callback = function(v)
-
-	local player = game.Players.LocalPlayer
-	
-	local function onCharacterAdded(character)
-	    local humanoid = character:WaitForChild("Humanoid")  -- Ждём загрузки Humanoid
-	    humanoid:SetStateEnabled(Enum.HumanoidStateType.Physics, true)  -- Включаем физику
-	    game:GetService("RunService").Stepped:Connect(function()
-	        if character and character.Parent then
-	            character.HumanoidRootPart.Velocity = Vector3.new(0, v, 0) -- Изменяем гравитацию для игрока
-	        end
-	    end)
-	end
-	
-	player.CharacterAdded:Connect(onCharacterAdded)
-	
-	if player.Character then
-	    onCharacterAdded(player.Character)
-	end
-			
+	local gravitynew = v
+	game.Workspace.Gravity = gravitynew		
 			
 end})
