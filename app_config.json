@@ -1,4 +1,5 @@
 {
   "LatestVersion": "1.0.2",
-  "ForceUpdate": true
+  "ForceUpdate": true,
+  "PromptProxy": true
 }
